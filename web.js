@@ -6,6 +6,9 @@ var fs = require('fs');
 var buffer = new Buffer(fs.readFileSync("index.html"));
 var html = buffer.toString();
 
+var rest = require('restler');
+
+
 app.get('/', function(request, response) {
   response.send(html);
 });
