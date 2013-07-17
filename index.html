@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>My First Bitstarter</title>
+    <meta name="viewport" content="widt=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/">
     <link type="text/css" rel="stylesheet" 
           href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-2.3.2.css">
     <style type="text/css">
@@ -39,66 +41,142 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="row navigation">
-        <div class="span2 logo">
-          Logo
-        </div>
-        <div class="span6 blank">
-          Blank
-        </div>
-        <div class="span4 about">
-          About
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Bitstarter</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
       </div>
-      <div class="row heading">
+    </div>
+
+    <div class="container">
+      <div class="row-fluid heading">
         <div class="span12">
           <h1>Cloud 18</h1>
         </div>
-      </div> 
-     <div class="row subheading">
+      </div>
+      <div class="row-fluid subheading">
         <div class="span12">
           <p class="lead">Making your transition to the coud easy!</p>
         </div>
       </div>
-      <div class="row pitch">
-        <div class="span6 video">
-          Video
+      <div class="row-fluid pitch">
+        <div class="span5 offset1 video">
+          <img class="img-polaroid" src="http://pacehold.it/480x300">
         </div>
-        <div class="span6">
-          <div class="thermometer">
-            Thermometer
+
+        <div class="span5 actions">
+          <div class="span8 offset2">
+            <div class="statistics">
+              <div class="span4">
+                <div class="linediv-l">
+                  <h3>1000</h3> <p>backers</p>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="linediv-c">
+                  <h3>$6,000</h3> <p>of $10,000</p>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="linediv-r">
+                  <h3>10</h3> <p>days left</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="order">
-            Order
+          <div class="span10 offset1">
+            <div class="thermometer progress active">
+              <div class="bar bar-success" style="width:  60%;"></div>
+              <div class="bar bar-warning" style="width:  40%;"></div>
+            </div>
           </div>
-          <div class="social">
-            Social
+          <div class="span6 offset3 order">
+            <button class="btn btn-success btn-large">Preorder</button>
+          </div>
+          <div class="span8 offset2 social">
+            <button class="btn btn-twitter"><i class="icon-twitter"></i> | Twitter</button>
+            <button class="btn btn-facebook"><i class="icon-facebook"></i> | Facebook</button>
           </div>
         </div>
       </div>
-      <div class="row section1">
-        <div class="span12">
-          Cloud 18 has a clear mission: assisting and enabling mid-sized companies in leveraging Cloud technologies in order to gain business advantage.          
+
+      <div class="row-fluid section1">
+        <div class="span5 offset1 asset">
+          <img class="imp-polaroid" src="http://placeholder.it/480x300">
+        </div>
+        <div class="span5 copy">
+          <p>
+             Cloud 18 has a clear mission: assisting and enabling mid-sized companies in leveraging Cloud technologies in order to gain business advantage.                    
+          </p>
         </div>
       </div>
-      <div class="row section2">
-        <div class="span12">
-          We provide the following services:
+      <div class="row-fluid section2">
+        <div class="span5 offset1 copy copy-right">
+          <p>
+             We provide the following services:
            <br>  -Cloud Strategic Assessment - Identifies the business benefits of adopting a cloud-based approach to IT and lays out the high-level roadmap for doing so.
            <br>  -Cloud Migration Services - End-to-end migration services to AWS of existing IT workloads.
            <br>  -Cloud Development Services - Custom development of Line-of-Business applications that are built from the ground up to take advantage of Cloud patterns and practices.
-           <br>  -Operations & Support - From providing operations and support services for a single IT workload or LOB application to servicing a company’s entire IT needs.
+           <br>  -Operations & Support - From providing operations and support services for a single IT workload or LOB application to servicing a company’s entire IT needs.          
+          </p>
+        </div>
+        <div class="span5 asset">
+          <img class="img-polaroid" src="http://placeholder.it/480x300">
         </div>
       </div>
-      <div class="row faq">
-        <div class="span12">
-          FAQ
+      <div class="row-fluid faq">
+        <div class="span10 offest1">
+          <h3>FAQ</h3>
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+              <div class="acordion heading">
+                <a class="accordion-toggle" data-toggle="collapse"
+                   data-parent="#accordion2" href="#collapseOne">
+                  What does FAQ stand for?
+                </a>
+              </div>
+              <div id="collapseOne" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  Frequently Asqued Question.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse"
+                   data-parent="#accordion2" href="#collapseTwo">
+                  What's a Frequently Asked Question?
+                </a>
+              </div>
+              <div id="collapseTwo" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  A question which is commonly asked by users.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row footer">
+      
+      <div class="=row-fluid footer">
         <div class="span12">
-          Footer
+          <p>This work is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">
+            By-SA 3.0
+          </a>, without all the stuff that would otherwise be put at the bottom of the page.</p>
         </div>
       </div>
     </div>
