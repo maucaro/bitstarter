@@ -26,7 +26,6 @@ var rest = require('restler');
 var program = require('commander');
 var cheerio = require('cheerio');
 var HTMLFILE_DEFAULT = "index.html";
-var HTMLTEMPFILE = "~" + HTMLFILE_DEFAULT;
 var CHECKSFILE_DEFAULT = "checks.json";
 
 var assertFileExists = function(infile) {
@@ -38,16 +37,12 @@ var assertFileExists = function(infile) {
     return instr;
 };
 
-var cheerioHtmlFile = function(htmlfile) {
-    return cheerio.load(fs.readFileSync(htmlfile));
-};
-
 var loadChecks = function(checksfile) {
     return JSON.parse(fs.readFileSync(checksfile));
 };
 
-var checkHtmlFile = function(htmlfile, checksfile) {
-    $ = cheerioHtmlFile(htmlfile);
+var checkHtml = function(html, checksfile) {
+    $ = cheerio.load(html);
     var checks = loadChecks(checksfile).sort();
     var out = {};
     for(var ii in checks) {
@@ -57,8 +52,8 @@ var checkHtmlFile = function(htmlfile, checksfile) {
     return out;
 };
 
-var processHtmlFile = function(htmlfile, checkfile) {
-    var checkJson = checkHtmlFile(htmlfile, checkfile);
+var processHtml = function(html, checkfile) {
+    var checkJson = checkHtml(html, checkfile);
     var outJson = JSON.stringify(checkJson, null, 4);
     console.log(outJson);    
 }
@@ -71,10 +66,10 @@ var clone = function(fn) {
 
 var processUrl = function(result, response) {
     if (result instanceof Error) {
-        console.error('Error: invalid URL');
+        console.log("Error accessing url. Exiting.");
+        process.exit(1); // http://nodejs.org/api/process.html#process_process_exit_code
     } else {
-        fs.writeFileSync(HTMLTEMPFILE, result);
-        processHtmlFile(HTMLTEMPFILE, program.checks)
+        processHtml(result, program.checks)
     }
 };
 
@@ -82,17 +77,17 @@ var processUrl = function(result, response) {
 if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
-        .option('-f, --file [html_file]', 'Path to HTML file', clone(assertFileExists))
+        .option('-f, --file [html_file]', 'Path to HTML file', clone(assertFileExists), HTMLFILE_DEFAULT)
         .option('-u, --url [html_url]', 'URL to HTML file')
         .parse(process.argv);
     if(program.url) {
         rest.get(program.url).on('complete', processUrl);
     }
-    else if(program.file) {
-        processHtmlFile(program.file, program.checks)
+    else {
+        processHtml(fs.readFileSync(program.file), program.checks)
     }
-    else console.log('Error: no file or URL specified')
+
 } else {
-    exports.checkHtmlFile = checkHtmlFile;
+    exports.checkHtml = checkHtml;
 }
 
