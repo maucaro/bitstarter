@@ -73,6 +73,13 @@ var processUrl = function(result, response) {
     }
 };
 
+var processFile = function(err, data) {
+    if (err) {
+        console.log(err);
+        process.exit(1);
+    }
+    processHtml(data, program.checks);
+};
 
 if(require.main == module) {
     program
@@ -84,10 +91,10 @@ if(require.main == module) {
         rest.get(program.url).on('complete', processUrl);
     }
     else {
-        processHtml(fs.readFileSync(program.file), program.checks)
+        fs.readFile(program.file, processFile);
     }
-
-} else {
-    exports.checkHtml = checkHtml;
+  }
+else {
+    exports.processHtml = processHtml;
 }
 
