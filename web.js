@@ -12,7 +12,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 8080);
 if (process.env.NODE_ENV == 'development') {
-    eval(fs.readFileSync('env.dev', encoding="ascii"));
+    eval(fs.readFileSync('.env.dev', encoding="ascii"));
     app.set('coinbase_api_key', settings.COINBASE_API_KEY);
 }
 else
